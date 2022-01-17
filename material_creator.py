@@ -534,32 +534,34 @@ def xps_shader_group():
     group_input = shader.nodes.new(NODE_GROUP_INPUT)
     group_input.location += Vector((-1200, 0))
 
+    input_diffuse = shader.inputs.new(NODE_SOCKET_COLOR, 'Diffuse')
+    input_diffuse.default_value = (DIFFUSE_COLOR)
+    input_lightmap = shader.inputs.new(NODE_SOCKET_COLOR, 'Lightmap')
+    input_lightmap.default_value = (LIGHTMAP_COLOR)
+    input_specular = shader.inputs.new(NODE_SOCKET_COLOR, 'Specular')
+    input_specular.default_value = (SPECULAR_COLOR)
+    input_emission = shader.inputs.new(NODE_SOCKET_COLOR, 'Emission')
+    input_normal = shader.inputs.new(NODE_SOCKET_COLOR, 'Bump Map')
+    input_normal.default_value = (NORMAL_COLOR)
+    input_bump_mask = shader.inputs.new(NODE_SOCKET_COLOR, 'Bump Mask')
+    input_microbump1 = shader.inputs.new(NODE_SOCKET_COLOR, 'MicroBump 1')
+    input_microbump1.default_value = (NORMAL_COLOR)
+    input_microbump2 = shader.inputs.new(NODE_SOCKET_COLOR, 'MicroBump 2')
+    input_microbump2.default_value = (NORMAL_COLOR)
+    input_environment = shader.inputs.new(NODE_SOCKET_COLOR, 'Environment')
+    input_alpha = shader.inputs.new(NODE_SOCKET_FLOAT_FACTOR, 'Alpha')
+    input_alpha.min_value = 0
+    input_alpha.max_value = 1
+    input_alpha.default_value = 1
+
+    # Group outputs
     group_output = shader.nodes.new(NODE_GROUP_OUTPUT)
     group_output.location += Vector((600, 0))
 
-    output_diffuse = shader.inputs.new(NODE_SOCKET_COLOR, 'Diffuse')
-    output_diffuse.default_value = (DIFFUSE_COLOR)
-    output_lightmap = shader.inputs.new(NODE_SOCKET_COLOR, 'Lightmap')
-    output_lightmap.default_value = (LIGHTMAP_COLOR)
-    output_specular = shader.inputs.new(NODE_SOCKET_COLOR, 'Specular')
-    output_specular.default_value = (SPECULAR_COLOR)
-    output_emission = shader.inputs.new(NODE_SOCKET_COLOR, 'Emission')
-    output_normal = shader.inputs.new(NODE_SOCKET_COLOR, 'Bump Map')
-    output_normal.default_value = (NORMAL_COLOR)
-    output_bump_mask = shader.inputs.new(NODE_SOCKET_COLOR, 'Bump Mask')
-    output_microbump1 = shader.inputs.new(NODE_SOCKET_COLOR, 'MicroBump 1')
-    output_microbump1.default_value = (NORMAL_COLOR)
-    output_microbump2 = shader.inputs.new(NODE_SOCKET_COLOR, 'MicroBump 2')
-    output_microbump2.default_value = (NORMAL_COLOR)
-    output_environment = shader.inputs.new(NODE_SOCKET_COLOR, 'Environment')
-    output_alpha = shader.inputs.new(NODE_SOCKET_FLOAT_FACTOR, 'Alpha')
-    output_alpha.min_value = 0
-    output_alpha.max_value = 1
-    output_alpha.default_value = 1
-
-    # Group outputs
     shader.outputs.new(NODE_SOCKET_SHADER, 'Shader')
 
+
+    # Principled
     principled = shader.nodes.new(PRINCIPLED_SHADER_NODE)
 
     # Diffuse and Lightmap
